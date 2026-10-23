@@ -406,3 +406,41 @@ body.overlay-open { overflow: hidden; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Evidencias, estados y formularios de la demostración SmartClaim AI. */
+[hidden] { display: none !important; }
+a { color: var(--blue); }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 100%; font: .875rem/1.7 var(--mono); }
+code { font-family: var(--mono); }
+summary { cursor: pointer; min-height: 44px; padding: 10px 0; font-weight: 600; color: var(--blue); }
+details { margin: 12px 0; }
+.content-pad { padding: 24px; }
+.content-pad > :first-child { margin-top: 0; }
+.content-pad > :last-child { margin-bottom: 0; }
+.prototype-note { padding: 12px clamp(16px,3vw,40px); color: var(--muted); background: var(--surface-alt); border-bottom: 1px solid var(--line); font-size: .875rem; }
+.save-status { padding: 8px clamp(16px,3vw,40px); color: var(--teal); font-size: .875rem; background: var(--canvas); }
+.save-status:empty { display: none; }
+.save-error, .form-error, .result-fail { color: var(--rose); }
+.result-pass { color: var(--teal); }
+.form-error:not(:empty) { background: var(--rose-soft); padding: 12px; border-radius: 8px; }
+.help-text { color: var(--muted); font-size: .875rem; line-height: 1.7; }
+.full { grid-column: 1 / -1; }
+.no-pad { padding: 0; }
+.table-description { min-width: 210px; max-width: 42ch; margin: 8px 0 0; }
+.comparison-summary { display: flex; gap: 24px; flex-wrap: wrap; }
+.latency-number { font-size: 1.5rem; }
+.board-columns > section { min-width: 0; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-alt); }
+.board-card > p { font-size: .875rem; }
+.board-card .field { margin-top: 14px; }
+.board-card select { width: 100%; max-width: 100%; font-size: .875rem; }
+.sprint-capture { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; }
+figure { margin: 0; min-width: 0; }
+figcaption { color: var(--muted); font-size: .875rem; }
+.content-pad ul { padding-left: 24px; }
+.content-pad li { margin: 8px 0; }
+.detail-section h3 { font-size: 1.0625rem; }
+.audit-line p { margin: 8px 0; }
+@media (max-width: 1100px) { .board-columns { grid-template-columns: minmax(0,1fr); } }
+@media (max-width: 600px) { .content-pad { padding: 20px; } .sprint-record { padding: 20px; } }
+.member-row > .avatar { color: #fff; display: grid; font-size: .75rem; margin-top: 0; }
+.no-margin { margin-top: 0; }

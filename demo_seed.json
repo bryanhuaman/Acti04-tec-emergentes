@@ -1,0 +1,103 @@
+{
+  "orders": {
+    "DG4-2026-1042": {
+      "status": "En camino",
+      "detail": "El repartidor está a 8 minutos de tu dirección.",
+      "steps": [
+        "Confirmado",
+        "En preparación",
+        "En camino",
+        "Entregado"
+      ],
+      "done": 3
+    },
+    "DG4-2026-1187": {
+      "status": "En preparación",
+      "detail": "El restaurante está preparando tu pedido.",
+      "steps": [
+        "Confirmado",
+        "En preparación",
+        "En camino",
+        "Entregado"
+      ],
+      "done": 2
+    },
+    "DG4-2026-0974": {
+      "status": "Entregado",
+      "detail": "Pedido entregado el 22 oct 2026 a las 13:42.",
+      "steps": [
+        "Confirmado",
+        "En preparación",
+        "En camino",
+        "Entregado"
+      ],
+      "done": 4
+    }
+  },
+  "claims": [
+    {
+      "id": "DG4-0241",
+      "customer": "Camila Torres",
+      "order": "DG4-2026-1042",
+      "channel": "Chat",
+      "description": "Mi pedido lleva 45 minutos de retraso y el estado no se actualiza.",
+      "avatar": "av-blue"
+    },
+    {
+      "id": "DG4-0239",
+      "customer": "Mateo Ríos",
+      "order": "DG4-2026-0974",
+      "channel": "Web",
+      "description": "Faltaron dos bebidas en mi pedido y necesito saber cómo se corrige.",
+      "avatar": "av-gold"
+    },
+    {
+      "id": "DG4-0238",
+      "customer": "Sofía Valdivia",
+      "order": "DG4-2026-1187",
+      "channel": "Correo",
+      "description": "Veo un cargo duplicado en mi tarjeta por el mismo pedido.",
+      "avatar": "av-purple"
+    },
+    {
+      "id": "DG4-0235",
+      "customer": "Nicolás León",
+      "order": "DG4-2026-0911",
+      "channel": "WhatsApp",
+      "description": "El pedido aparece entregado, pero nunca lo recibí.",
+      "avatar": "av-rose"
+    },
+    {
+      "id": "DG4-0234",
+      "customer": "Lucía Paredes",
+      "order": "DG4-2026-0890",
+      "channel": "Chat",
+      "description": "Quiero devolver el pedido porque llegó en malas condiciones.",
+      "avatar": "av-green"
+    },
+    {
+      "id": "DG4-0231",
+      "customer": "Diego Mena",
+      "order": "DG4-2026-0807",
+      "channel": "Web",
+      "description": "¿Por qué todavía no tengo novedades de mi pedido?",
+      "avatar": "av-blue"
+    },
+    {
+      "id": "DG4-0228",
+      "customer": "Renata Silva",
+      "order": "DG4-2026-0712",
+      "channel": "Chat",
+      "description": "Me cobraron, pero la orden fue cancelada.",
+      "avatar": "av-purple"
+    },
+    {
+      "id": "DG4-0225",
+      "customer": "Andrés Quispe",
+      "order": "DG4-2026-0668",
+      "channel": "Correo",
+      "description": "El restaurante olvidó un producto que sí figura en la boleta.",
+      "avatar": "av-gold"
+    }
+  ]
+}

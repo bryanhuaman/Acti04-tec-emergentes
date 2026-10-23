@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-10-23T21:20:36.788Z",
+  "scope": "Verificación automática; no certifica toda la accesibilidad ni evidencia reuniones Scrum",
+  "engine": "axe-core",
+  "viewThemeChecks": 32,
+  "widths": [
+    1440,
+    390
+  ],
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "violations": [],
+  "javascriptErrors": []
+}

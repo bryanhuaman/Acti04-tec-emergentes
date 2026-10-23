@@ -1,3 +1,2 @@
-# Streamlit reconoce requirements.txt como archivo oficial.
-# Este archivo se mantiene como alias para entregas que solicitan el nombre singular.
-streamlit>=1.37.0,<2.0.0
+# Alias de compatibilidad: las dependencias oficiales están en requirements.txt.
+-r requirements.txt

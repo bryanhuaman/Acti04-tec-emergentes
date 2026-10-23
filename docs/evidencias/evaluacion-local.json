@@ -1,0 +1,2195 @@
+{
+  "generatedAt": "2026-10-23T21:20:32.486Z",
+  "config": {
+    "version": "reglas-v2-extractivo-v2",
+    "threshold": 0.7,
+    "maxFragments": 3,
+    "corpus": "corpus-academico-v1",
+    "dataset": "casos-sinteticos-v1",
+    "generativeAI": false
+  },
+  "fingerprint": "e212ba5f",
+  "dataset": {
+    "version": "casos-sinteticos-v1",
+    "kind": "Casos sintéticos etiquetados; no representan desempeño en producción",
+    "count": 38
+  },
+  "metrics": {
+    "macroF1": 0.884004884004884,
+    "classificationAccuracy": 0.8421052631578947,
+    "recallAt3": 0.8571428571428571,
+    "extractiveFidelity": 1,
+    "routingAccuracy": 0.868421052631579,
+    "abstentionAccuracy": 0.9230769230769231,
+    "latencyP50Ms": 0,
+    "latencyP95Ms": 0.10000000009313226
+  },
+  "denominators": {
+    "classification": 38,
+    "retrieval": 35,
+    "extractiveFragments": 52,
+    "routing": 38,
+    "abstention": 13,
+    "latency": 38
+  },
+  "perCategory": [
+    {
+      "category": "Demora en entrega",
+      "tp": 3,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.75,
+      "recall": 1,
+      "f1": 0.8571428571428571
+    },
+    {
+      "category": "Pedido incompleto",
+      "tp": 4,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1,
+      "recall": 0.8,
+      "f1": 0.888888888888889
+    },
+    {
+      "category": "Cobro duplicado",
+      "tp": 3,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1,
+      "recall": 0.75,
+      "f1": 0.8571428571428571
+    },
+    {
+      "category": "Incidente de pago",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+    },
+    {
+      "category": "Pedido no recibido",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+    },
+    {
+      "category": "Producto en mal estado",
+      "tp": 2,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1,
+      "recall": 0.6666666666666666,
+      "f1": 0.8
+    },
+    {
+      "category": "Seguimiento de pedido",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+    },
+    {
+      "category": "Reembolso o devolución",
+      "tp": 2,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1,
+      "recall": 0.6666666666666666,
+      "f1": 0.8
+    },
+    {
+      "category": "Pago de pedido cancelado",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+    },
+    {
+      "category": "Cobertura o dirección",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+    },
+    {
+      "category": "Caso sensible",
+      "tp": 4,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1,
+      "recall": 0.8,
+      "f1": 0.888888888888889
+    },
+    {
+      "category": "Varias incidencias",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+    },
+    {
+      "category": "Otros",
+      "tp": 2,
+      "fp": 5,
+      "fn": 1,
+      "precision": 0.2857142857142857,
+      "recall": 0.6666666666666666,
+      "f1": 0.4
+    }
+  ],
+  "results": [
+    {
+      "id": "EV-01",
+      "description": "El repartidor lleva una hora de retraso.",
+      "expectedCategory": "Demora en entrega",
+      "expectedDocuments": [
+        "POL-01",
+        "POL-07"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Demora en entrega",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-01",
+          "POL-07"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-01-F01",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Si un pedido supera el plazo prometido, verificar su estado antes de informar una nueva estimación de entrega.",
+            "ref": "POL-01 · POL-01-F01"
+          },
+          {
+            "id": "POL-07-F01",
+            "documentId": "POL-07",
+            "title": "Compensaciones",
+            "version": "v2.2",
+            "text": "Las compensaciones por demoras o fallos se evalúan según la incidencia verificada y requieren autorización humana.",
+            "ref": "POL-07 · POL-07-F01"
+          },
+          {
+            "id": "POL-01-F02",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Comunicar únicamente el estado y el tiempo que figuren en el registro del pedido; no inventar horarios.",
+            "ref": "POL-01 · POL-01-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «El repartidor lleva una hora de retraso.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nSi un pedido supera el plazo prometido, verificar su estado antes de informar una nueva estimación de entrega. [POL-01-F01]\n\nLas compensaciones por demoras o fallos se evalúan según la incidencia verificada y requieren autorización humana. [POL-07-F01]\n\nComunicar únicamente el estado y el tiempo que figuren en el registro del pedido; no inventar horarios. [POL-01-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0.10000000009313226,
+      "recall": 1,
+      "supportedFragments": 3,
+      "usedFragments": 3
+    },
+    {
+      "id": "EV-02",
+      "description": "Mi pedido llega tarde y todavía lo estoy esperando.",
+      "expectedCategory": "Demora en entrega",
+      "expectedDocuments": [
+        "POL-01",
+        "POL-07"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Demora en entrega",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-01",
+          "POL-07"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-01-F01",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Si un pedido supera el plazo prometido, verificar su estado antes de informar una nueva estimación de entrega.",
+            "ref": "POL-01 · POL-01-F01"
+          },
+          {
+            "id": "POL-07-F01",
+            "documentId": "POL-07",
+            "title": "Compensaciones",
+            "version": "v2.2",
+            "text": "Las compensaciones por demoras o fallos se evalúan según la incidencia verificada y requieren autorización humana.",
+            "ref": "POL-07 · POL-07-F01"
+          },
+          {
+            "id": "POL-01-F02",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Comunicar únicamente el estado y el tiempo que figuren en el registro del pedido; no inventar horarios.",
+            "ref": "POL-01 · POL-01-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «Mi pedido llega tarde y todavía lo estoy esperando.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nSi un pedido supera el plazo prometido, verificar su estado antes de informar una nueva estimación de entrega. [POL-01-F01]\n\nLas compensaciones por demoras o fallos se evalúan según la incidencia verificada y requieren autorización humana. [POL-07-F01]\n\nComunicar únicamente el estado y el tiempo que figuren en el registro del pedido; no inventar horarios. [POL-01-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 3,
+      "usedFragments": 3
+    },
+    {
+      "id": "EV-03",
+      "description": "Mi comida no llega desde hace 40 minutos.",
+      "expectedCategory": "Demora en entrega",
+      "expectedDocuments": [
+        "POL-01",
+        "POL-07"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Demora en entrega",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-01",
+          "POL-07"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-01-F01",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Si un pedido supera el plazo prometido, verificar su estado antes de informar una nueva estimación de entrega.",
+            "ref": "POL-01 · POL-01-F01"
+          },
+          {
+            "id": "POL-07-F01",
+            "documentId": "POL-07",
+            "title": "Compensaciones",
+            "version": "v2.2",
+            "text": "Las compensaciones por demoras o fallos se evalúan según la incidencia verificada y requieren autorización humana.",
+            "ref": "POL-07 · POL-07-F01"
+          },
+          {
+            "id": "POL-01-F02",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Comunicar únicamente el estado y el tiempo que figuren en el registro del pedido; no inventar horarios.",
+            "ref": "POL-01 · POL-01-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «Mi comida no llega desde hace 40 minutos.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nSi un pedido supera el plazo prometido, verificar su estado antes de informar una nueva estimación de entrega. [POL-01-F01]\n\nLas compensaciones por demoras o fallos se evalúan según la incidencia verificada y requieren autorización humana. [POL-07-F01]\n\nComunicar únicamente el estado y el tiempo que figuren en el registro del pedido; no inventar horarios. [POL-01-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 3,
+      "usedFragments": 3
+    },
+    {
+      "id": "EV-04",
+      "description": "Faltan dos bebidas del pedido.",
+      "expectedCategory": "Pedido incompleto",
+      "expectedDocuments": [
+        "POL-02"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Pedido incompleto",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-02"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-02-F01",
+            "documentId": "POL-02",
+            "title": "Pedido incompleto",
+            "version": "v1.8",
+            "text": "Ante productos faltantes o equivocados, contrastar el comprobante con el detalle del pedido y registrar los artículos afectados.",
+            "ref": "POL-02 · POL-02-F01"
+          },
+          {
+            "id": "POL-02-F02",
+            "documentId": "POL-02",
+            "title": "Pedido incompleto",
+            "version": "v1.8",
+            "text": "La reposición o devolución por faltantes requiere validación del agente; no confirmar una compensación antes de esa revisión.",
+            "ref": "POL-02 · POL-02-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «Faltan dos bebidas del pedido.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nAnte productos faltantes o equivocados, contrastar el comprobante con el detalle del pedido y registrar los artículos afectados. [POL-02-F01]\n\nLa reposición o devolución por faltantes requiere validación del agente; no confirmar una compensación antes de esa revisión. [POL-02-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 2,
+      "usedFragments": 2
+    },
+    {
+      "id": "EV-05",
+      "description": "Recibí productos equivocados.",
+      "expectedCategory": "Pedido incompleto",
+      "expectedDocuments": [
+        "POL-02"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Pedido incompleto",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-02"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-02-F01",
+            "documentId": "POL-02",
+            "title": "Pedido incompleto",
+            "version": "v1.8",
+            "text": "Ante productos faltantes o equivocados, contrastar el comprobante con el detalle del pedido y registrar los artículos afectados.",
+            "ref": "POL-02 · POL-02-F01"
+          },
+          {
+            "id": "POL-02-F02",
+            "documentId": "POL-02",
+            "title": "Pedido incompleto",
+            "version": "v1.8",
+            "text": "La reposición o devolución por faltantes requiere validación del agente; no confirmar una compensación antes de esa revisión.",
+            "ref": "POL-02 · POL-02-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «Recibí productos equivocados.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nAnte productos faltantes o equivocados, contrastar el comprobante con el detalle del pedido y registrar los artículos afectados. [POL-02-F01]\n\nLa reposición o devolución por faltantes requiere validación del agente; no confirmar una compensación antes de esa revisión. [POL-02-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 2,
+      "usedFragments": 2
+    },
+    {
+      "id": "EV-06",
+      "description": "El restaurante olvidó incluir mi postre.",
+      "expectedCategory": "Pedido incompleto",
+      "expectedDocuments": [
+        "POL-02"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Pedido incompleto",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-02"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-02-F01",
+            "documentId": "POL-02",
+            "title": "Pedido incompleto",
+            "version": "v1.8",
+            "text": "Ante productos faltantes o equivocados, contrastar el comprobante con el detalle del pedido y registrar los artículos afectados.",
+            "ref": "POL-02 · POL-02-F01"
+          },
+          {
+            "id": "POL-02-F02",
+            "documentId": "POL-02",
+            "title": "Pedido incompleto",
+            "version": "v1.8",
+            "text": "La reposición o devolución por faltantes requiere validación del agente; no confirmar una compensación antes de esa revisión.",
+            "ref": "POL-02 · POL-02-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «El restaurante olvidó incluir mi postre.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nAnte productos faltantes o equivocados, contrastar el comprobante con el detalle del pedido y registrar los artículos afectados. [POL-02-F01]\n\nLa reposición o devolución por faltantes requiere validación del agente; no confirmar una compensación antes de esa revisión. [POL-02-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 2,
+      "usedFragments": 2
+    },
+    {
+      "id": "EV-07",
+      "description": "Tengo un cobro duplicado en mi tarjeta.",
+      "expectedCategory": "Cobro duplicado",
+      "expectedDocuments": [
+        "POL-04"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Cobro duplicado",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-04"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-04-F01",
+            "documentId": "POL-04",
+            "title": "Incidentes de pago",
+            "version": "v1.5",
+            "text": "Ante un posible cobro duplicado, verificar las autorizaciones y el estado de ambas transacciones antes de pedir una reversa.",
+            "ref": "POL-04 · POL-04-F01"
+          },
+          {
+            "id": "POL-04-F02",
+            "documentId": "POL-04",
+            "title": "Incidentes de pago",
+            "version": "v1.5",
+            "text": "Un pago rechazado o no reconocido requiere comprobación del registro de pagos; no solicitar claves bancarias ni el número completo de tarjeta.",
+            "ref": "POL-04 · POL-04-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «Tengo un cobro duplicado en mi tarjeta.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nAnte un posible cobro duplicado, verificar las autorizaciones y el estado de ambas transacciones antes de pedir una reversa. [POL-04-F01]\n\nUn pago rechazado o no reconocido requiere comprobación del registro de pagos; no solicitar claves bancarias ni el número completo de tarjeta. [POL-04-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 2,
+      "usedFragments": 2
+    },
+    {
+      "id": "EV-08",
+      "description": "Me cobraron dos veces la misma orden.",
+      "expectedCategory": "Cobro duplicado",
+      "expectedDocuments": [
+        "POL-04"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Cobro duplicado",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-04"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-04-F01",
+            "documentId": "POL-04",
+            "title": "Incidentes de pago",
+            "version": "v1.5",
+            "text": "Ante un posible cobro duplicado, verificar las autorizaciones y el estado de ambas transacciones antes de pedir una reversa.",
+            "ref": "POL-04 · POL-04-F01"
+          },
+          {
+            "id": "POL-04-F02",
+            "documentId": "POL-04",
+            "title": "Incidentes de pago",
+            "version": "v1.5",
+            "text": "Un pago rechazado o no reconocido requiere comprobación del registro de pagos; no solicitar claves bancarias ni el número completo de tarjeta.",
+            "ref": "POL-04 · POL-04-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «Me cobraron dos veces la misma orden.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nAnte un posible cobro duplicado, verificar las autorizaciones y el estado de ambas transacciones antes de pedir una reversa. [POL-04-F01]\n\nUn pago rechazado o no reconocido requiere comprobación del registro de pagos; no solicitar claves bancarias ni el número completo de tarjeta. [POL-04-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 2,
+      "usedFragments": 2
+    },
+    {
+      "id": "EV-09",
+      "description": "Aparecen dos cargos por el pedido.",
+      "expectedCategory": "Cobro duplicado",
+      "expectedDocuments": [
+        "POL-04"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Cobro duplicado",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-04"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-04-F01",
+            "documentId": "POL-04",
+            "title": "Incidentes de pago",
+            "version": "v1.5",
+            "text": "Ante un posible cobro duplicado, verificar las autorizaciones y el estado de ambas transacciones antes de pedir una reversa.",
+            "ref": "POL-04 · POL-04-F01"
+          },
+          {
+            "id": "POL-04-F02",
+            "documentId": "POL-04",
+            "title": "Incidentes de pago",
+            "version": "v1.5",
+            "text": "Un pago rechazado o no reconocido requiere comprobación del registro de pagos; no solicitar claves bancarias ni el número completo de tarjeta.",
+            "ref": "POL-04 · POL-04-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «Aparecen dos cargos por el pedido.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nAnte un posible cobro duplicado, verificar las autorizaciones y el estado de ambas transacciones antes de pedir una reversa. [POL-04-F01]\n\nUn pago rechazado o no reconocido requiere comprobación del registro de pagos; no solicitar claves bancarias ni el número completo de tarjeta. [POL-04-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0.10000000009313226,
+      "recall": 1,
+      "supportedFragments": 2,
+      "usedFragments": 2
+    },
+    {
+      "id": "EV-10",
+      "description": "Mi pago fue rechazado.",
+      "expectedCategory": "Incidente de pago",
+      "expectedDocuments": [
+        "POL-04"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Incidente de pago",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-04"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-04-F01",
+            "documentId": "POL-04",
+            "title": "Incidentes de pago",
+            "version": "v1.5",
+            "text": "Ante un posible cobro duplicado, verificar las autorizaciones y el estado de ambas transacciones antes de pedir una reversa.",
+            "ref": "POL-04 · POL-04-F01"
+          },
+          {
+            "id": "POL-04-F02",
+            "documentId": "POL-04",
+            "title": "Incidentes de pago",
+            "version": "v1.5",
+            "text": "Un pago rechazado o no reconocido requiere comprobación del registro de pagos; no solicitar claves bancarias ni el número completo de tarjeta.",
+            "ref": "POL-04 · POL-04-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «Mi pago fue rechazado.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nAnte un posible cobro duplicado, verificar las autorizaciones y el estado de ambas transacciones antes de pedir una reversa. [POL-04-F01]\n\nUn pago rechazado o no reconocido requiere comprobación del registro de pagos; no solicitar claves bancarias ni el número completo de tarjeta. [POL-04-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 2,
+      "usedFragments": 2
+    },
+    {
+      "id": "EV-11",
+      "description": "El cargo de mi tarjeta no es reconocido.",
+      "expectedCategory": "Incidente de pago",
+      "expectedDocuments": [
+        "POL-04"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Incidente de pago",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-04"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-04-F01",
+            "documentId": "POL-04",
+            "title": "Incidentes de pago",
+            "version": "v1.5",
+            "text": "Ante un posible cobro duplicado, verificar las autorizaciones y el estado de ambas transacciones antes de pedir una reversa.",
+            "ref": "POL-04 · POL-04-F01"
+          },
+          {
+            "id": "POL-04-F02",
+            "documentId": "POL-04",
+            "title": "Incidentes de pago",
+            "version": "v1.5",
+            "text": "Un pago rechazado o no reconocido requiere comprobación del registro de pagos; no solicitar claves bancarias ni el número completo de tarjeta.",
+            "ref": "POL-04 · POL-04-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «El cargo de mi tarjeta no es reconocido.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nAnte un posible cobro duplicado, verificar las autorizaciones y el estado de ambas transacciones antes de pedir una reversa. [POL-04-F01]\n\nUn pago rechazado o no reconocido requiere comprobación del registro de pagos; no solicitar claves bancarias ni el número completo de tarjeta. [POL-04-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 2,
+      "usedFragments": 2
+    },
+    {
+      "id": "EV-12",
+      "description": "El pedido figura entregado pero no lo recibí.",
+      "expectedCategory": "Pedido no recibido",
+      "expectedDocuments": [
+        "POL-01",
+        "POL-11"
+      ],
+      "expectedRoute": "escalate",
+      "expectedAbstention": true,
+      "prediction": {
+        "category": "Pedido no recibido",
+        "confidence": 0.9,
+        "route": "escalate",
+        "reasons": [
+          "Entrega disputada: requiere revisión especializada"
+        ],
+        "documents": [
+          "POL-01",
+          "POL-11"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-01-F01",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Si un pedido supera el plazo prometido, verificar su estado antes de informar una nueva estimación de entrega.",
+            "ref": "POL-01 · POL-01-F01"
+          },
+          {
+            "id": "POL-11-F01",
+            "documentId": "POL-11",
+            "title": "Escalamiento especializado",
+            "version": "v1.1",
+            "text": "Derivar a revisión especializada los casos sensibles, ambiguos, con varias incidencias o sin evidencia suficiente.",
+            "ref": "POL-11 · POL-11-F01"
+          },
+          {
+            "id": "POL-01-F02",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Comunicar únicamente el estado y el tiempo que figuren en el registro del pedido; no inventar horarios.",
+            "ref": "POL-01 · POL-01-F02"
+          }
+        ],
+        "draft": ""
+      },
+      "latencyMs": 0.20000000018626451,
+      "recall": 1,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-13",
+      "description": "Nunca recibí la entrega que aparece como entregada.",
+      "expectedCategory": "Pedido no recibido",
+      "expectedDocuments": [
+        "POL-01",
+        "POL-11"
+      ],
+      "expectedRoute": "escalate",
+      "expectedAbstention": true,
+      "prediction": {
+        "category": "Pedido no recibido",
+        "confidence": 0.9,
+        "route": "escalate",
+        "reasons": [
+          "Entrega disputada: requiere revisión especializada"
+        ],
+        "documents": [
+          "POL-01",
+          "POL-11"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-01-F01",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Si un pedido supera el plazo prometido, verificar su estado antes de informar una nueva estimación de entrega.",
+            "ref": "POL-01 · POL-01-F01"
+          },
+          {
+            "id": "POL-11-F01",
+            "documentId": "POL-11",
+            "title": "Escalamiento especializado",
+            "version": "v1.1",
+            "text": "Derivar a revisión especializada los casos sensibles, ambiguos, con varias incidencias o sin evidencia suficiente.",
+            "ref": "POL-11 · POL-11-F01"
+          },
+          {
+            "id": "POL-01-F02",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Comunicar únicamente el estado y el tiempo que figuren en el registro del pedido; no inventar horarios.",
+            "ref": "POL-01 · POL-01-F02"
+          }
+        ],
+        "draft": ""
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-14",
+      "description": "La caja llegó dañada y la comida en malas condiciones.",
+      "expectedCategory": "Producto en mal estado",
+      "expectedDocuments": [
+        "POL-10",
+        "POL-03"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Producto en mal estado",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-10",
+          "POL-03"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-10-F01",
+            "documentId": "POL-10",
+            "title": "Evidencia fotográfica",
+            "version": "v1.2",
+            "text": "Los productos dañados o en malas condiciones requieren registrar evidencia de la incidencia y una evaluación antes de proponer reposición.",
+            "ref": "POL-10 · POL-10-F01"
+          },
+          {
+            "id": "POL-03-F01",
+            "documentId": "POL-03",
+            "title": "Reembolsos y devoluciones",
+            "version": "v3.1",
+            "text": "Para una solicitud de reembolso, registrar el motivo y verificar el pago y la incidencia antes de autorizar una devolución.",
+            "ref": "POL-03 · POL-03-F01"
+          },
+          {
+            "id": "POL-10-F02",
+            "documentId": "POL-10",
+            "title": "Evidencia fotográfica",
+            "version": "v1.2",
+            "text": "Solicitar solo la evidencia necesaria del producto; evitar fotografías que expongan información personal innecesaria.",
+            "ref": "POL-10 · POL-10-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «La caja llegó dañada y la comida en malas condiciones.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nLos productos dañados o en malas condiciones requieren registrar evidencia de la incidencia y una evaluación antes de proponer reposición. [POL-10-F01]\n\nPara una solicitud de reembolso, registrar el motivo y verificar el pago y la incidencia antes de autorizar una devolución. [POL-03-F01]\n\nSolicitar solo la evidencia necesaria del producto; evitar fotografías que expongan información personal innecesaria. [POL-10-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 3,
+      "usedFragments": 3
+    },
+    {
+      "id": "EV-15",
+      "description": "El envase está roto.",
+      "expectedCategory": "Producto en mal estado",
+      "expectedDocuments": [
+        "POL-10",
+        "POL-03"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Producto en mal estado",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-10",
+          "POL-03"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-10-F01",
+            "documentId": "POL-10",
+            "title": "Evidencia fotográfica",
+            "version": "v1.2",
+            "text": "Los productos dañados o en malas condiciones requieren registrar evidencia de la incidencia y una evaluación antes de proponer reposición.",
+            "ref": "POL-10 · POL-10-F01"
+          },
+          {
+            "id": "POL-03-F01",
+            "documentId": "POL-03",
+            "title": "Reembolsos y devoluciones",
+            "version": "v3.1",
+            "text": "Para una solicitud de reembolso, registrar el motivo y verificar el pago y la incidencia antes de autorizar una devolución.",
+            "ref": "POL-03 · POL-03-F01"
+          },
+          {
+            "id": "POL-10-F02",
+            "documentId": "POL-10",
+            "title": "Evidencia fotográfica",
+            "version": "v1.2",
+            "text": "Solicitar solo la evidencia necesaria del producto; evitar fotografías que expongan información personal innecesaria.",
+            "ref": "POL-10 · POL-10-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «El envase está roto.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nLos productos dañados o en malas condiciones requieren registrar evidencia de la incidencia y una evaluación antes de proponer reposición. [POL-10-F01]\n\nPara una solicitud de reembolso, registrar el motivo y verificar el pago y la incidencia antes de autorizar una devolución. [POL-03-F01]\n\nSolicitar solo la evidencia necesaria del producto; evitar fotografías que expongan información personal innecesaria. [POL-10-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 3,
+      "usedFragments": 3
+    },
+    {
+      "id": "EV-16",
+      "description": "¿Cuál es el estado de mi pedido?",
+      "expectedCategory": "Seguimiento de pedido",
+      "expectedDocuments": [
+        "POL-01"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Seguimiento de pedido",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-01"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-01-F01",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Si un pedido supera el plazo prometido, verificar su estado antes de informar una nueva estimación de entrega.",
+            "ref": "POL-01 · POL-01-F01"
+          },
+          {
+            "id": "POL-01-F02",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Comunicar únicamente el estado y el tiempo que figuren en el registro del pedido; no inventar horarios.",
+            "ref": "POL-01 · POL-01-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «¿Cuál es el estado de mi pedido?». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nSi un pedido supera el plazo prometido, verificar su estado antes de informar una nueva estimación de entrega. [POL-01-F01]\n\nComunicar únicamente el estado y el tiempo que figuren en el registro del pedido; no inventar horarios. [POL-01-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 2,
+      "usedFragments": 2
+    },
+    {
+      "id": "EV-17",
+      "description": "Necesito seguimiento de la orden.",
+      "expectedCategory": "Seguimiento de pedido",
+      "expectedDocuments": [
+        "POL-01"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Seguimiento de pedido",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-01"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-01-F01",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Si un pedido supera el plazo prometido, verificar su estado antes de informar una nueva estimación de entrega.",
+            "ref": "POL-01 · POL-01-F01"
+          },
+          {
+            "id": "POL-01-F02",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Comunicar únicamente el estado y el tiempo que figuren en el registro del pedido; no inventar horarios.",
+            "ref": "POL-01 · POL-01-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «Necesito seguimiento de la orden.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nSi un pedido supera el plazo prometido, verificar su estado antes de informar una nueva estimación de entrega. [POL-01-F01]\n\nComunicar únicamente el estado y el tiempo que figuren en el registro del pedido; no inventar horarios. [POL-01-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 2,
+      "usedFragments": 2
+    },
+    {
+      "id": "EV-18",
+      "description": "Quiero solicitar un reembolso.",
+      "expectedCategory": "Reembolso o devolución",
+      "expectedDocuments": [
+        "POL-03"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Reembolso o devolución",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-03"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-03-F01",
+            "documentId": "POL-03",
+            "title": "Reembolsos y devoluciones",
+            "version": "v3.1",
+            "text": "Para una solicitud de reembolso, registrar el motivo y verificar el pago y la incidencia antes de autorizar una devolución.",
+            "ref": "POL-03 · POL-03-F01"
+          },
+          {
+            "id": "POL-03-F02",
+            "documentId": "POL-03",
+            "title": "Reembolsos y devoluciones",
+            "version": "v3.1",
+            "text": "Una devolución aprobada se gestiona al medio de pago original; el agente debe verificar el plazo aplicable antes de comunicarlo.",
+            "ref": "POL-03 · POL-03-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «Quiero solicitar un reembolso.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nPara una solicitud de reembolso, registrar el motivo y verificar el pago y la incidencia antes de autorizar una devolución. [POL-03-F01]\n\nUna devolución aprobada se gestiona al medio de pago original; el agente debe verificar el plazo aplicable antes de comunicarlo. [POL-03-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 2,
+      "usedFragments": 2
+    },
+    {
+      "id": "EV-19",
+      "description": "Deseo devolver mi compra.",
+      "expectedCategory": "Reembolso o devolución",
+      "expectedDocuments": [
+        "POL-03"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Reembolso o devolución",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-03"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-03-F01",
+            "documentId": "POL-03",
+            "title": "Reembolsos y devoluciones",
+            "version": "v3.1",
+            "text": "Para una solicitud de reembolso, registrar el motivo y verificar el pago y la incidencia antes de autorizar una devolución.",
+            "ref": "POL-03 · POL-03-F01"
+          },
+          {
+            "id": "POL-03-F02",
+            "documentId": "POL-03",
+            "title": "Reembolsos y devoluciones",
+            "version": "v3.1",
+            "text": "Una devolución aprobada se gestiona al medio de pago original; el agente debe verificar el plazo aplicable antes de comunicarlo.",
+            "ref": "POL-03 · POL-03-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «Deseo devolver mi compra.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nPara una solicitud de reembolso, registrar el motivo y verificar el pago y la incidencia antes de autorizar una devolución. [POL-03-F01]\n\nUna devolución aprobada se gestiona al medio de pago original; el agente debe verificar el plazo aplicable antes de comunicarlo. [POL-03-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 2,
+      "usedFragments": 2
+    },
+    {
+      "id": "EV-20",
+      "description": "Se canceló mi pedido pero me cobraron.",
+      "expectedCategory": "Pago de pedido cancelado",
+      "expectedDocuments": [
+        "POL-09",
+        "POL-03"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Pago de pedido cancelado",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-09",
+          "POL-03"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-09-F01",
+            "documentId": "POL-09",
+            "title": "Pedidos cancelados",
+            "version": "v1.9",
+            "text": "Si un pedido cancelado registra un cobro, verificar su estado de pago y solicitar la revisión de devolución.",
+            "ref": "POL-09 · POL-09-F01"
+          },
+          {
+            "id": "POL-03-F01",
+            "documentId": "POL-03",
+            "title": "Reembolsos y devoluciones",
+            "version": "v3.1",
+            "text": "Para una solicitud de reembolso, registrar el motivo y verificar el pago y la incidencia antes de autorizar una devolución.",
+            "ref": "POL-03 · POL-03-F01"
+          },
+          {
+            "id": "POL-09-F02",
+            "documentId": "POL-09",
+            "title": "Pedidos cancelados",
+            "version": "v1.9",
+            "text": "La cancelación y el reembolso son procesos distintos; informar al cliente del estado confirmado de cada uno.",
+            "ref": "POL-09 · POL-09-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «Se canceló mi pedido pero me cobraron.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nSi un pedido cancelado registra un cobro, verificar su estado de pago y solicitar la revisión de devolución. [POL-09-F01]\n\nPara una solicitud de reembolso, registrar el motivo y verificar el pago y la incidencia antes de autorizar una devolución. [POL-03-F01]\n\nLa cancelación y el reembolso son procesos distintos; informar al cliente del estado confirmado de cada uno. [POL-09-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 3,
+      "usedFragments": 3
+    },
+    {
+      "id": "EV-21",
+      "description": "Mi orden fue cancelada.",
+      "expectedCategory": "Pago de pedido cancelado",
+      "expectedDocuments": [
+        "POL-09"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Pago de pedido cancelado",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-09",
+          "POL-03"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-09-F01",
+            "documentId": "POL-09",
+            "title": "Pedidos cancelados",
+            "version": "v1.9",
+            "text": "Si un pedido cancelado registra un cobro, verificar su estado de pago y solicitar la revisión de devolución.",
+            "ref": "POL-09 · POL-09-F01"
+          },
+          {
+            "id": "POL-03-F01",
+            "documentId": "POL-03",
+            "title": "Reembolsos y devoluciones",
+            "version": "v3.1",
+            "text": "Para una solicitud de reembolso, registrar el motivo y verificar el pago y la incidencia antes de autorizar una devolución.",
+            "ref": "POL-03 · POL-03-F01"
+          },
+          {
+            "id": "POL-09-F02",
+            "documentId": "POL-09",
+            "title": "Pedidos cancelados",
+            "version": "v1.9",
+            "text": "La cancelación y el reembolso son procesos distintos; informar al cliente del estado confirmado de cada uno.",
+            "ref": "POL-09 · POL-09-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «Mi orden fue cancelada.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nSi un pedido cancelado registra un cobro, verificar su estado de pago y solicitar la revisión de devolución. [POL-09-F01]\n\nPara una solicitud de reembolso, registrar el motivo y verificar el pago y la incidencia antes de autorizar una devolución. [POL-03-F01]\n\nLa cancelación y el reembolso son procesos distintos; informar al cliente del estado confirmado de cada uno. [POL-09-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 3,
+      "usedFragments": 3
+    },
+    {
+      "id": "EV-22",
+      "description": "¿Tienen cobertura en mi zona?",
+      "expectedCategory": "Cobertura o dirección",
+      "expectedDocuments": [
+        "POL-08"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Cobertura o dirección",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-08"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-08-F01",
+            "documentId": "POL-08",
+            "title": "Zonas de cobertura",
+            "version": "v1.7",
+            "text": "Para consultas de cobertura, comprobar la zona y la dirección del pedido antes de confirmar disponibilidad.",
+            "ref": "POL-08 · POL-08-F01"
+          },
+          {
+            "id": "POL-08-F02",
+            "documentId": "POL-08",
+            "title": "Zonas de cobertura",
+            "version": "v1.7",
+            "text": "Un cambio de dirección necesita revisión del estado operativo; no asegurar que sea posible durante una entrega.",
+            "ref": "POL-08 · POL-08-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «¿Tienen cobertura en mi zona?». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nPara consultas de cobertura, comprobar la zona y la dirección del pedido antes de confirmar disponibilidad. [POL-08-F01]\n\nUn cambio de dirección necesita revisión del estado operativo; no asegurar que sea posible durante una entrega. [POL-08-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 2,
+      "usedFragments": 2
+    },
+    {
+      "id": "EV-23",
+      "description": "Quiero cambiar la dirección del pedido.",
+      "expectedCategory": "Cobertura o dirección",
+      "expectedDocuments": [
+        "POL-08"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Cobertura o dirección",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-08"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-08-F01",
+            "documentId": "POL-08",
+            "title": "Zonas de cobertura",
+            "version": "v1.7",
+            "text": "Para consultas de cobertura, comprobar la zona y la dirección del pedido antes de confirmar disponibilidad.",
+            "ref": "POL-08 · POL-08-F01"
+          },
+          {
+            "id": "POL-08-F02",
+            "documentId": "POL-08",
+            "title": "Zonas de cobertura",
+            "version": "v1.7",
+            "text": "Un cambio de dirección necesita revisión del estado operativo; no asegurar que sea posible durante una entrega.",
+            "ref": "POL-08 · POL-08-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «Quiero cambiar la dirección del pedido.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nPara consultas de cobertura, comprobar la zona y la dirección del pedido antes de confirmar disponibilidad. [POL-08-F01]\n\nUn cambio de dirección necesita revisión del estado operativo; no asegurar que sea posible durante una entrega. [POL-08-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 2,
+      "usedFragments": 2
+    },
+    {
+      "id": "EV-24",
+      "description": "La comida me causó una alergia.",
+      "expectedCategory": "Caso sensible",
+      "expectedDocuments": [
+        "POL-05",
+        "POL-11"
+      ],
+      "expectedRoute": "escalate",
+      "expectedAbstention": true,
+      "prediction": {
+        "category": "Caso sensible",
+        "confidence": 0.95,
+        "route": "escalate",
+        "reasons": [
+          "Caso sensible: requiere atención especializada"
+        ],
+        "documents": [
+          "POL-05",
+          "POL-11"
+        ],
+        "sensitive": true,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-05-F01",
+            "documentId": "POL-05",
+            "title": "Atención de pedidos sensibles",
+            "version": "v2.0",
+            "text": "Los reportes de alergia, intoxicación, lesiones, amenazas o riesgo para la salud requieren atención especializada inmediata.",
+            "ref": "POL-05 · POL-05-F01"
+          },
+          {
+            "id": "POL-11-F01",
+            "documentId": "POL-11",
+            "title": "Escalamiento especializado",
+            "version": "v1.1",
+            "text": "Derivar a revisión especializada los casos sensibles, ambiguos, con varias incidencias o sin evidencia suficiente.",
+            "ref": "POL-11 · POL-11-F01"
+          },
+          {
+            "id": "POL-05-F02",
+            "documentId": "POL-05",
+            "title": "Atención de pedidos sensibles",
+            "version": "v2.0",
+            "text": "Los casos sensibles no deben recibir una resolución automática ni una garantía de seguridad del producto.",
+            "ref": "POL-05 · POL-05-F02"
+          }
+        ],
+        "draft": ""
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-25",
+      "description": "Tengo una intoxicación después de comer.",
+      "expectedCategory": "Caso sensible",
+      "expectedDocuments": [
+        "POL-05",
+        "POL-11"
+      ],
+      "expectedRoute": "escalate",
+      "expectedAbstention": true,
+      "prediction": {
+        "category": "Caso sensible",
+        "confidence": 0.95,
+        "route": "escalate",
+        "reasons": [
+          "Caso sensible: requiere atención especializada"
+        ],
+        "documents": [
+          "POL-05",
+          "POL-11"
+        ],
+        "sensitive": true,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-05-F01",
+            "documentId": "POL-05",
+            "title": "Atención de pedidos sensibles",
+            "version": "v2.0",
+            "text": "Los reportes de alergia, intoxicación, lesiones, amenazas o riesgo para la salud requieren atención especializada inmediata.",
+            "ref": "POL-05 · POL-05-F01"
+          },
+          {
+            "id": "POL-11-F01",
+            "documentId": "POL-11",
+            "title": "Escalamiento especializado",
+            "version": "v1.1",
+            "text": "Derivar a revisión especializada los casos sensibles, ambiguos, con varias incidencias o sin evidencia suficiente.",
+            "ref": "POL-11 · POL-11-F01"
+          },
+          {
+            "id": "POL-05-F02",
+            "documentId": "POL-05",
+            "title": "Atención de pedidos sensibles",
+            "version": "v2.0",
+            "text": "Los casos sensibles no deben recibir una resolución automática ni una garantía de seguridad del producto.",
+            "ref": "POL-05 · POL-05-F02"
+          }
+        ],
+        "draft": ""
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-26",
+      "description": "Han filtrado mis datos personales.",
+      "expectedCategory": "Caso sensible",
+      "expectedDocuments": [
+        "POL-12",
+        "POL-11"
+      ],
+      "expectedRoute": "escalate",
+      "expectedAbstention": true,
+      "prediction": {
+        "category": "Caso sensible",
+        "confidence": 0.95,
+        "route": "escalate",
+        "reasons": [
+          "Caso sensible: requiere atención especializada"
+        ],
+        "documents": [
+          "POL-12",
+          "POL-11"
+        ],
+        "sensitive": true,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-12-F01",
+            "documentId": "POL-12",
+            "title": "Protección de datos",
+            "version": "v2.0",
+            "text": "No solicitar contraseñas, códigos de verificación ni datos bancarios completos para atender un reclamo.",
+            "ref": "POL-12 · POL-12-F01"
+          },
+          {
+            "id": "POL-11-F01",
+            "documentId": "POL-11",
+            "title": "Escalamiento especializado",
+            "version": "v1.1",
+            "text": "Derivar a revisión especializada los casos sensibles, ambiguos, con varias incidencias o sin evidencia suficiente.",
+            "ref": "POL-11 · POL-11-F01"
+          },
+          {
+            "id": "POL-12-F02",
+            "documentId": "POL-12",
+            "title": "Protección de datos",
+            "version": "v2.0",
+            "text": "Las solicitudes sobre filtración de datos o acceso indebido deben escalarse y limitarse a información necesaria para la revisión.",
+            "ref": "POL-12 · POL-12-F02"
+          }
+        ],
+        "draft": ""
+      },
+      "latencyMs": 0.09999999962747097,
+      "recall": 1,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-27",
+      "description": "El repartidor me amenazó.",
+      "expectedCategory": "Caso sensible",
+      "expectedDocuments": [
+        "POL-05",
+        "POL-11"
+      ],
+      "expectedRoute": "escalate",
+      "expectedAbstention": true,
+      "prediction": {
+        "category": "Caso sensible",
+        "confidence": 0.95,
+        "route": "escalate",
+        "reasons": [
+          "Caso sensible: requiere atención especializada"
+        ],
+        "documents": [
+          "POL-05",
+          "POL-11"
+        ],
+        "sensitive": true,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-05-F01",
+            "documentId": "POL-05",
+            "title": "Atención de pedidos sensibles",
+            "version": "v2.0",
+            "text": "Los reportes de alergia, intoxicación, lesiones, amenazas o riesgo para la salud requieren atención especializada inmediata.",
+            "ref": "POL-05 · POL-05-F01"
+          },
+          {
+            "id": "POL-11-F01",
+            "documentId": "POL-11",
+            "title": "Escalamiento especializado",
+            "version": "v1.1",
+            "text": "Derivar a revisión especializada los casos sensibles, ambiguos, con varias incidencias o sin evidencia suficiente.",
+            "ref": "POL-11 · POL-11-F01"
+          },
+          {
+            "id": "POL-05-F02",
+            "documentId": "POL-05",
+            "title": "Atención de pedidos sensibles",
+            "version": "v2.0",
+            "text": "Los casos sensibles no deben recibir una resolución automática ni una garantía de seguridad del producto.",
+            "ref": "POL-05 · POL-05-F02"
+          }
+        ],
+        "draft": ""
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-28",
+      "description": "Faltan bebidas y además tengo un cobro duplicado.",
+      "expectedCategory": "Varias incidencias",
+      "expectedDocuments": [
+        "POL-02",
+        "POL-04",
+        "POL-11"
+      ],
+      "expectedRoute": "escalate",
+      "expectedAbstention": true,
+      "prediction": {
+        "category": "Varias incidencias",
+        "confidence": 0.66,
+        "route": "escalate",
+        "reasons": [
+          "Varias incidencias: Pedido incompleto, Cobro duplicado",
+          "Confianza heurística menor a 0,70"
+        ],
+        "documents": [
+          "POL-02",
+          "POL-04",
+          "POL-11"
+        ],
+        "sensitive": false,
+        "multiple": true,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-02-F01",
+            "documentId": "POL-02",
+            "title": "Pedido incompleto",
+            "version": "v1.8",
+            "text": "Ante productos faltantes o equivocados, contrastar el comprobante con el detalle del pedido y registrar los artículos afectados.",
+            "ref": "POL-02 · POL-02-F01"
+          },
+          {
+            "id": "POL-04-F01",
+            "documentId": "POL-04",
+            "title": "Incidentes de pago",
+            "version": "v1.5",
+            "text": "Ante un posible cobro duplicado, verificar las autorizaciones y el estado de ambas transacciones antes de pedir una reversa.",
+            "ref": "POL-04 · POL-04-F01"
+          },
+          {
+            "id": "POL-11-F01",
+            "documentId": "POL-11",
+            "title": "Escalamiento especializado",
+            "version": "v1.1",
+            "text": "Derivar a revisión especializada los casos sensibles, ambiguos, con varias incidencias o sin evidencia suficiente.",
+            "ref": "POL-11 · POL-11-F01"
+          }
+        ],
+        "draft": ""
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-29",
+      "description": "La comida llegó dañada y con dos cargos en tarjeta.",
+      "expectedCategory": "Varias incidencias",
+      "expectedDocuments": [
+        "POL-10",
+        "POL-04",
+        "POL-11"
+      ],
+      "expectedRoute": "escalate",
+      "expectedAbstention": true,
+      "prediction": {
+        "category": "Varias incidencias",
+        "confidence": 0.66,
+        "route": "escalate",
+        "reasons": [
+          "Varias incidencias: Cobro duplicado, Producto en mal estado",
+          "Confianza heurística menor a 0,70"
+        ],
+        "documents": [
+          "POL-04",
+          "POL-10",
+          "POL-11"
+        ],
+        "sensitive": false,
+        "multiple": true,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-04-F01",
+            "documentId": "POL-04",
+            "title": "Incidentes de pago",
+            "version": "v1.5",
+            "text": "Ante un posible cobro duplicado, verificar las autorizaciones y el estado de ambas transacciones antes de pedir una reversa.",
+            "ref": "POL-04 · POL-04-F01"
+          },
+          {
+            "id": "POL-10-F01",
+            "documentId": "POL-10",
+            "title": "Evidencia fotográfica",
+            "version": "v1.2",
+            "text": "Los productos dañados o en malas condiciones requieren registrar evidencia de la incidencia y una evaluación antes de proponer reposición.",
+            "ref": "POL-10 · POL-10-F01"
+          },
+          {
+            "id": "POL-11-F01",
+            "documentId": "POL-11",
+            "title": "Escalamiento especializado",
+            "version": "v1.1",
+            "text": "Derivar a revisión especializada los casos sensibles, ambiguos, con varias incidencias o sin evidencia suficiente.",
+            "ref": "POL-11 · POL-11-F01"
+          }
+        ],
+        "draft": ""
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-30",
+      "description": "Tal vez falta algo, pero no estoy seguro.",
+      "expectedCategory": "Pedido incompleto",
+      "expectedDocuments": [
+        "POL-02",
+        "POL-11"
+      ],
+      "expectedRoute": "escalate",
+      "expectedAbstention": true,
+      "prediction": {
+        "category": "Pedido incompleto",
+        "confidence": 0.62,
+        "route": "escalate",
+        "reasons": [
+          "Descripción ambigua",
+          "Confianza heurística menor a 0,70"
+        ],
+        "documents": [
+          "POL-02",
+          "POL-11"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": true,
+        "evidence": [
+          {
+            "id": "POL-02-F01",
+            "documentId": "POL-02",
+            "title": "Pedido incompleto",
+            "version": "v1.8",
+            "text": "Ante productos faltantes o equivocados, contrastar el comprobante con el detalle del pedido y registrar los artículos afectados.",
+            "ref": "POL-02 · POL-02-F01"
+          },
+          {
+            "id": "POL-11-F01",
+            "documentId": "POL-11",
+            "title": "Escalamiento especializado",
+            "version": "v1.1",
+            "text": "Derivar a revisión especializada los casos sensibles, ambiguos, con varias incidencias o sin evidencia suficiente.",
+            "ref": "POL-11 · POL-11-F01"
+          },
+          {
+            "id": "POL-02-F02",
+            "documentId": "POL-02",
+            "title": "Pedido incompleto",
+            "version": "v1.8",
+            "text": "La reposición o devolución por faltantes requiere validación del agente; no confirmar una compensación antes de esa revisión.",
+            "ref": "POL-02 · POL-02-F02"
+          }
+        ],
+        "draft": ""
+      },
+      "latencyMs": 0,
+      "recall": 1,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-31",
+      "description": "Necesito ayuda con algo extraño.",
+      "expectedCategory": "Otros",
+      "expectedDocuments": [],
+      "expectedRoute": "escalate",
+      "expectedAbstention": true,
+      "prediction": {
+        "category": "Otros",
+        "confidence": 0.4,
+        "route": "escalate",
+        "reasons": [
+          "Confianza heurística menor a 0,70",
+          "Categoría sin una regla específica"
+        ],
+        "documents": [],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [],
+        "draft": ""
+      },
+      "latencyMs": 0,
+      "recall": null,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-32",
+      "description": "Quiero felicitar al equipo.",
+      "expectedCategory": "Otros",
+      "expectedDocuments": [],
+      "expectedRoute": "escalate",
+      "expectedAbstention": true,
+      "prediction": {
+        "category": "Otros",
+        "confidence": 0.4,
+        "route": "escalate",
+        "reasons": [
+          "Confianza heurística menor a 0,70",
+          "Categoría sin una regla específica"
+        ],
+        "documents": [],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [],
+        "draft": ""
+      },
+      "latencyMs": 0,
+      "recall": null,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-33",
+      "description": "La bolsa solo traía la mitad de lo que pagué.",
+      "expectedCategory": "Pedido incompleto",
+      "expectedDocuments": [
+        "POL-02"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Otros",
+        "confidence": 0.4,
+        "route": "escalate",
+        "reasons": [
+          "Confianza heurística menor a 0,70",
+          "Categoría sin una regla específica"
+        ],
+        "documents": [],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [],
+        "draft": ""
+      },
+      "latencyMs": 0,
+      "recall": 0,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-34",
+      "description": "Veo el mismo débito repetido en el banco.",
+      "expectedCategory": "Cobro duplicado",
+      "expectedDocuments": [
+        "POL-04"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Otros",
+        "confidence": 0.4,
+        "route": "escalate",
+        "reasons": [
+          "Confianza heurística menor a 0,70",
+          "Categoría sin una regla específica"
+        ],
+        "documents": [],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [],
+        "draft": ""
+      },
+      "latencyMs": 0,
+      "recall": 0,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-35",
+      "description": "Quiero recuperar el importe que aboné.",
+      "expectedCategory": "Reembolso o devolución",
+      "expectedDocuments": [
+        "POL-03"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Otros",
+        "confidence": 0.4,
+        "route": "escalate",
+        "reasons": [
+          "Confianza heurística menor a 0,70",
+          "Categoría sin una regla específica"
+        ],
+        "documents": [],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [],
+        "draft": ""
+      },
+      "latencyMs": 0,
+      "recall": 0,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-36",
+      "description": "El almuerzo estaba podrido.",
+      "expectedCategory": "Producto en mal estado",
+      "expectedDocuments": [
+        "POL-10",
+        "POL-03"
+      ],
+      "expectedRoute": "review",
+      "expectedAbstention": false,
+      "prediction": {
+        "category": "Otros",
+        "confidence": 0.4,
+        "route": "escalate",
+        "reasons": [
+          "Confianza heurística menor a 0,70",
+          "Categoría sin una regla específica"
+        ],
+        "documents": [],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [],
+        "draft": ""
+      },
+      "latencyMs": 0,
+      "recall": 0,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-37",
+      "description": "Mi hijo se enfermó con la comida.",
+      "expectedCategory": "Caso sensible",
+      "expectedDocuments": [
+        "POL-05",
+        "POL-11"
+      ],
+      "expectedRoute": "escalate",
+      "expectedAbstention": true,
+      "prediction": {
+        "category": "Otros",
+        "confidence": 0.4,
+        "route": "escalate",
+        "reasons": [
+          "Confianza heurística menor a 0,70",
+          "Categoría sin una regla específica"
+        ],
+        "documents": [],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [],
+        "draft": ""
+      },
+      "latencyMs": 0,
+      "recall": 0,
+      "supportedFragments": 0,
+      "usedFragments": 0
+    },
+    {
+      "id": "EV-38",
+      "description": "La entrega fue normal, no hubo retraso.",
+      "expectedCategory": "Otros",
+      "expectedDocuments": [],
+      "expectedRoute": "escalate",
+      "expectedAbstention": true,
+      "prediction": {
+        "category": "Demora en entrega",
+        "confidence": 0.9,
+        "route": "review",
+        "reasons": [],
+        "documents": [
+          "POL-01",
+          "POL-07"
+        ],
+        "sensitive": false,
+        "multiple": false,
+        "ambiguous": false,
+        "evidence": [
+          {
+            "id": "POL-01-F01",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Si un pedido supera el plazo prometido, verificar su estado antes de informar una nueva estimación de entrega.",
+            "ref": "POL-01 · POL-01-F01"
+          },
+          {
+            "id": "POL-07-F01",
+            "documentId": "POL-07",
+            "title": "Compensaciones",
+            "version": "v2.2",
+            "text": "Las compensaciones por demoras o fallos se evalúan según la incidencia verificada y requieren autorización humana.",
+            "ref": "POL-07 · POL-07-F01"
+          },
+          {
+            "id": "POL-01-F02",
+            "documentId": "POL-01",
+            "title": "Política de entregas",
+            "version": "v2.4",
+            "text": "Comunicar únicamente el estado y el tiempo que figuren en el registro del pedido; no inventar horarios.",
+            "ref": "POL-01 · POL-01-F02"
+          }
+        ],
+        "draft": "Hola cliente, registramos tu consulta. Nos indicas: «La entrega fue normal, no hubo retraso.». Estas son las indicaciones aplicables, pendientes de validación por un agente:\n\nSi un pedido supera el plazo prometido, verificar su estado antes de informar una nueva estimación de entrega. [POL-01-F01]\n\nLas compensaciones por demoras o fallos se evalúan según la incidencia verificada y requieren autorización humana. [POL-07-F01]\n\nComunicar únicamente el estado y el tiempo que figuren en el registro del pedido; no inventar horarios. [POL-01-F02]\n\nLa solución concreta se confirmará después de revisar los datos del pedido. Esta propuesta no autoriza una devolución ni confirma hechos no verificados."
+      },
+      "latencyMs": 0,
+      "recall": null,
+      "supportedFragments": 3,
+      "usedFragments": 3
+    }
+  ],
+  "comparison": {
+    "measurements": [],
+    "manualCount": 0,
+    "assistedCount": 0,
+    "pairs": [],
+    "manualMeanMs": null,
+    "assistedMeanMs": null,
+    "reduction": null
+  },
+  "corpus": [
+    {
+      "id": "POL-01",
+      "title": "Política de entregas",
+      "version": "v2.4",
+      "date": "12 oct 2026",
+      "description": "Plazos, incidencias y compensaciones por demora.",
+      "type": "Operaciones",
+      "fictional": true,
+      "fragments": [
+        {
+          "id": "POL-01-F01",
+          "text": "Si un pedido supera el plazo prometido, verificar su estado antes de informar una nueva estimación de entrega."
+        },
+        {
+          "id": "POL-01-F02",
+          "text": "Comunicar únicamente el estado y el tiempo que figuren en el registro del pedido; no inventar horarios."
+        }
+      ]
+    },
+    {
+      "id": "POL-02",
+      "title": "Pedido incompleto",
+      "version": "v1.8",
+      "date": "08 oct 2026",
+      "description": "Procedimiento para faltantes y productos equivocados.",
+      "type": "Calidad",
+      "fictional": true,
+      "fragments": [
+        {
+          "id": "POL-02-F01",
+          "text": "Ante productos faltantes o equivocados, contrastar el comprobante con el detalle del pedido y registrar los artículos afectados."
+        },
+        {
+          "id": "POL-02-F02",
+          "text": "La reposición o devolución por faltantes requiere validación del agente; no confirmar una compensación antes de esa revisión."
+        }
+      ]
+    },
+    {
+      "id": "POL-03",
+      "title": "Reembolsos y devoluciones",
+      "version": "v3.1",
+      "date": "30 sep 2026",
+      "description": "Criterios de devolución, abonos y medios de pago.",
+      "type": "Finanzas",
+      "fictional": true,
+      "fragments": [
+        {
+          "id": "POL-03-F01",
+          "text": "Para una solicitud de reembolso, registrar el motivo y verificar el pago y la incidencia antes de autorizar una devolución."
+        },
+        {
+          "id": "POL-03-F02",
+          "text": "Una devolución aprobada se gestiona al medio de pago original; el agente debe verificar el plazo aplicable antes de comunicarlo."
+        }
+      ]
+    },
+    {
+      "id": "POL-04",
+      "title": "Incidentes de pago",
+      "version": "v1.5",
+      "date": "28 sep 2026",
+      "description": "Cobros duplicados, pagos rechazados y conciliaciones.",
+      "type": "Pagos",
+      "fictional": true,
+      "fragments": [
+        {
+          "id": "POL-04-F01",
+          "text": "Ante un posible cobro duplicado, verificar las autorizaciones y el estado de ambas transacciones antes de pedir una reversa."
+        },
+        {
+          "id": "POL-04-F02",
+          "text": "Un pago rechazado o no reconocido requiere comprobación del registro de pagos; no solicitar claves bancarias ni el número completo de tarjeta."
+        }
+      ]
+    },
+    {
+      "id": "POL-05",
+      "title": "Atención de pedidos sensibles",
+      "version": "v2.0",
+      "date": "21 sep 2026",
+      "description": "Escalamiento y lenguaje para casos de alto impacto.",
+      "type": "Atención",
+      "fictional": true,
+      "fragments": [
+        {
+          "id": "POL-05-F01",
+          "text": "Los reportes de alergia, intoxicación, lesiones, amenazas o riesgo para la salud requieren atención especializada inmediata."
+        },
+        {
+          "id": "POL-05-F02",
+          "text": "Los casos sensibles no deben recibir una resolución automática ni una garantía de seguridad del producto."
+        }
+      ]
+    },
+    {
+      "id": "POL-06",
+      "title": "Código de conducta",
+      "version": "v1.3",
+      "date": "14 sep 2026",
+      "description": "Estándares de comunicación y registro de casos.",
+      "type": "Atención",
+      "fictional": true,
+      "fragments": [
+        {
+          "id": "POL-06-F01",
+          "text": "La respuesta debe ser respetuosa, describir hechos verificados y distinguir una solicitud registrada de una solución ya autorizada."
+        },
+        {
+          "id": "POL-06-F02",
+          "text": "Conservar en el historial la propuesta, sus cambios y la identidad declarada de la persona que la revisó."
+        }
+      ]
+    },
+    {
+      "id": "POL-07",
+      "title": "Compensaciones",
+      "version": "v2.2",
+      "date": "08 sep 2026",
+      "description": "Montos y condiciones para compensar incidencias.",
+      "type": "Finanzas",
+      "fictional": true,
+      "fragments": [
+        {
+          "id": "POL-07-F01",
+          "text": "Las compensaciones por demoras o fallos se evalúan según la incidencia verificada y requieren autorización humana."
+        },
+        {
+          "id": "POL-07-F02",
+          "text": "No prometer importes, cupones ni devoluciones sin una autorización registrada y una política aplicable."
+        }
+      ]
+    },
+    {
+      "id": "POL-08",
+      "title": "Zonas de cobertura",
+      "version": "v1.7",
+      "date": "02 sep 2026",
+      "description": "Cobertura operativa, horarios y restricciones.",
+      "type": "Operaciones",
+      "fictional": true,
+      "fragments": [
+        {
+          "id": "POL-08-F01",
+          "text": "Para consultas de cobertura, comprobar la zona y la dirección del pedido antes de confirmar disponibilidad."
+        },
+        {
+          "id": "POL-08-F02",
+          "text": "Un cambio de dirección necesita revisión del estado operativo; no asegurar que sea posible durante una entrega."
+        }
+      ]
+    },
+    {
+      "id": "POL-09",
+      "title": "Pedidos cancelados",
+      "version": "v1.9",
+      "date": "25 ago 2026",
+      "description": "Causales, comunicación y recuperación de pagos.",
+      "type": "Operaciones",
+      "fictional": true,
+      "fragments": [
+        {
+          "id": "POL-09-F01",
+          "text": "Si un pedido cancelado registra un cobro, verificar su estado de pago y solicitar la revisión de devolución."
+        },
+        {
+          "id": "POL-09-F02",
+          "text": "La cancelación y el reembolso son procesos distintos; informar al cliente del estado confirmado de cada uno."
+        }
+      ]
+    },
+    {
+      "id": "POL-10",
+      "title": "Evidencia fotográfica",
+      "version": "v1.2",
+      "date": "18 ago 2026",
+      "description": "Requisitos para reportar calidad y faltantes.",
+      "type": "Calidad",
+      "fictional": true,
+      "fragments": [
+        {
+          "id": "POL-10-F01",
+          "text": "Los productos dañados o en malas condiciones requieren registrar evidencia de la incidencia y una evaluación antes de proponer reposición."
+        },
+        {
+          "id": "POL-10-F02",
+          "text": "Solicitar solo la evidencia necesaria del producto; evitar fotografías que expongan información personal innecesaria."
+        }
+      ]
+    },
+    {
+      "id": "POL-11",
+      "title": "Escalamiento especializado",
+      "version": "v1.1",
+      "date": "10 ago 2026",
+      "description": "Rutas de revisión para casos sensibles o ambiguos.",
+      "type": "Atención",
+      "fictional": true,
+      "fragments": [
+        {
+          "id": "POL-11-F01",
+          "text": "Derivar a revisión especializada los casos sensibles, ambiguos, con varias incidencias o sin evidencia suficiente."
+        },
+        {
+          "id": "POL-11-F02",
+          "text": "Registrar el motivo de la derivación, la fecha y la persona responsable; la revisión debe quedar documentada antes de retomar la respuesta."
+        }
+      ]
+    },
+    {
+      "id": "POL-12",
+      "title": "Protección de datos",
+      "version": "v2.0",
+      "date": "02 ago 2026",
+      "description": "Tratamiento seguro de datos de clientes y pedidos.",
+      "type": "Legal",
+      "fictional": true,
+      "fragments": [
+        {
+          "id": "POL-12-F01",
+          "text": "No solicitar contraseñas, códigos de verificación ni datos bancarios completos para atender un reclamo."
+        },
+        {
+          "id": "POL-12-F02",
+          "text": "Las solicitudes sobre filtración de datos o acceso indebido deben escalarse y limitarse a información necesaria para la revisión."
+        }
+      ]
+    }
+  ],
+  "referenceReport": {
+    "name": "Grupo 4 - Actividad 04.pdf",
+    "project": "SmartClaim AI",
+    "officialRepository": "https://github.com/Jhanfranco07/Clasificador-de-Reclamos",
+    "checkedCommit": "86691f7da69554ab5173afd5cb0bd5464d5169e4",
+    "training": {
+      "examples": 105,
+      "validation": 27,
+      "accuracy": 0.7407,
+      "macroF1": 0.73
+    },
+    "note": "Resultados citados en el informe y contrastados con training_report.txt; no son mediciones de esta demostración."
+  }
+}

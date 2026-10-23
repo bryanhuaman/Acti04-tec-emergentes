@@ -1,102 +1,93 @@
-# Delivery G4 · Atención asistida
+# SmartClaim AI · Demostración de la Actividad 04
 
-Aplicación del proyecto de Tecnologías Emergentes del Grupo 04. Incluye el plan Scrum y un prototipo navegable para registrar reclamos, clasificar casos, recuperar políticas, proponer respuestas y exigir revisión humana antes de aprobarlas.
+Web académica para registrar reclamos, consultar pedidos propios, recuperar políticas de demostración y revisar respuestas. Está alineada con **Grupo 4 - Actividad 04.pdf**, que contiene **15 HU**, y conserva el diseño adaptable con temas claro, oscuro y automático.
+
+**Esta web es un prototipo sin claves, en Streamlit + SQLite.** El informe describe otra implementación, en React/Vite y FastAPI, en [Clasificador-de-Reclamos](https://github.com/Jhanfranco07/Clasificador-de-Reclamos). Aquí se usan reglas y propuestas extractivas; no hay IA generativa real, conexión con PedidosYa ni mensajes externos. **HU-07 / TE-10 continúa pendiente de validación externa.**
+
+Lee la [evaluación de cumplimiento](docs/REVISION-ACTIVIDAD.md) y el [plan Scrum actualizado](docs/PLAN-SCRUM.md).
 
 ## Ejecutar con Streamlit
 
-Se recomienda Python 3.10 o superior.
-
-### Windows PowerShell
-
-```powershell
-cd ruta\a\delivery-g4
-py -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-streamlit run streamlit_app.py
-```
-
-Si PowerShell bloquea la activación, ejecuta primero:
-
-```powershell
-Set-ExecutionPolicy -Scope Process Bypass
-```
-
-### macOS o Linux
+Python 3.10+ y Streamlit 1.41+:
 
 ```bash
-cd /ruta/a/delivery-g4
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 streamlit run streamlit_app.py
 ```
 
-Streamlit abrirá el navegador automáticamente. Si no lo hace, visita `http://localhost:8501`.
+En Windows usa `py -m venv .venv` y `.venv\Scripts\Activate.ps1`. En Streamlit Cloud, selecciona `streamlit_app.py` como entrada. Las dependencias oficiales están en `requirements.txt`; `requirement.txt` es solo un alias.
 
-En Streamlit Cloud, sube este repositorio y configura:
+### Cuentas públicas de demostración
 
-- **Main file path:** `streamlit_app.py`
-- **Python dependencies:** se detectan desde `requirements.txt`
+| Cuenta | Perfil | Pedido visible de ejemplo |
+| --- | --- | --- |
+| camila@example.test | Cliente | DG4-2026-1042, DG4-2026-0974 |
+| sofia@example.test | Cliente | DG4-2026-1187 |
+| agente@example.test | Agente | Bandeja compartida |
 
-El archivo `requirement.txt` singular se incluye como alias por compatibilidad con entregas académicas; el archivo oficial que utiliza Streamlit es `requirements.txt`.
+Contraseña de todas las cuentas: `SmartClaim-demo-2026`. Son datos de acceso ficticios y públicos; no sirven para un entorno con datos reales. El servidor autentica las sesiones, resuelve los roles y filtra los pedidos y reclamos por cuenta. Los clientes no reciben borradores internos ni auditoría del agente; reciben únicamente la respuesta final registrada como envío simulado.
 
-## Estructura del repositorio
+La sesión se conserva al recargar mediante un identificador aleatorio con caducidad de 24 horas, almacenado como hash en SQLite; cerrar sesión lo revoca. Se trata de autenticación de demostración, sin recuperación de cuenta, gestión de usuarios ni endurecimiento para producción.
 
-```text
-delivery-g4/
-├── streamlit_app.py              # Entrada de la aplicación
-├── requirements.txt              # Dependencia oficial de Streamlit
-├── requirement.txt               # Alias solicitado para la entrega
-├── frontend/
-│   ├── index.html                # Estructura de la interfaz
-│   ├── styles.css                # Diseño responsive
-│   └── app.js                    # Navegación y funcionalidades simuladas
-├── docs/
-│   ├── PLAN-SCRUM.md             # Plan Scrum completo
-│   └── referencia/               # PDF original de la tarea
-└── .gitignore
-```
+## Qué permite probar
 
-## Funcionalidades
+- **Cliente:** registrar un reclamo de un pedido propio, consultar sus casos y pedidos, buscar FAQ y solicitar revisión de una pregunta ambigua.
+- **Agente:** revisar la bandeja compartida, categoría calculada y hasta tres fragmentos, leer los doce documentos de demostración, editar borradores y conservar su historial.
+- **Control humano:** aprobar la versión exacta del texto, invalidar la aprobación al editar, registrar un envío simulado y derivar casos con motivo y responsable. Los casos sensibles requieren una decisión especializada antes de aprobar.
+- **Evaluación:** ejecutar 38 casos sintéticos etiquetados, ver los errores, F1 macro, Recall@3, respaldo extractivo, enrutamiento, abstención y latencia local. Exportar muestra, configuración, resultados y corpus a JSON.
+- **Tiempos:** medir de verdad la preparación manual y asistida de los mismos casos. La comparación permanece sin datos hasta disponer de muestras emparejadas.
+- **Scrum:** consultar las 15 HU, roles, prioridades, SP y enlaces TE-4 a TE-18; actualizar un tablero local con responsable por tarjeta; completar dos fichas C, adjuntar PNG/JPEG y exportar un informe HTML imprimible a PDF y el tablero SVG.
 
-- Bandeja de reclamos con búsqueda, filtros y detalle.
-- Registro validado con identificador, clasificación y nivel de confianza.
-- Recuperación de hasta tres fragmentos con documento y versión.
-- Borradores editables, auditoría, aprobación humana y escalamiento.
-- Preguntas frecuentes con respuestas validadas y revisión de ambiguas.
-- Consulta de pedidos simulados y manejo de identificadores inexistentes.
-- Reporte reproducible con clasificación, recuperación, fidelidad, enrutamiento, abstención, latencia y comparación manual/asistida.
-- Product Backlog completo con 12 historias, 52 SP, dos sprints, fichas y tablero inicial.
+La página mantiene el estado histórico del informe: Sprint 1 **12/12 SP**, Sprint 2 **27/35 SP**, HU-07 en curso y HU-12 a HU-15 como mejoras futuras. Los complementos de esta web no actualizan Jira ni certifican reuniones, participación o aceptación de historias.
 
-Los cambios de reclamos se conservan en `localStorage` dentro del navegador del usuario.
+## Datos y persistencia
 
-## Apariencia y accesibilidad
+SQLite se crea en `.local/smartclaim.sqlite3`, fuera del control de versiones. `SMARTCLAIM_DB_PATH` permite otra ubicación. Se usa control de revisión para rechazar escrituras desactualizadas en lugar de sobrescribir cambios de otra sesión. El botón **Actualizar** recarga la bandeja.
 
-- El selector **Tema** permite elegir **Claro**, **Oscuro** o **Automático**. La selección se conserva en el navegador cuando el almacenamiento está disponible.
-- En automático, la interfaz sigue el tema de Streamlit. Al abrir el frontend por separado, sigue la preferencia del sistema operativo.
-- En móviles, el botón de menú muestra la navegación completa. Las tarjetas y formularios se organizan en una columna; las tablas anchas se desplazan dentro de su propio contenedor, también con teclado.
-- La tipografía usa fuentes del sistema, sin descargas externas. Los textos, campos, avisos y estados comparten colores con contraste para ambos temas.
-- Se puede navegar con teclado, saltar al contenido y cerrar menús y diálogos con Escape. Los diálogos mantienen el foco dentro y lo devuelven al control de origen al cerrar.
-- El marco de Streamlit ocupa el alto disponible de la ventana, sin el espacio vacío del marco fijo anterior.
+En alojamientos con disco efímero, la base puede perderse al reconstruir o reiniciar la instancia. Exporta respaldos desde Configuración. No se importan automáticamente datos de navegadores de la versión anterior a la base compartida; sus claves de almacenamiento no se borran. No ingreses datos reales o sensibles: las cuentas son públicas y el respaldo contiene la información visible para la sesión.
 
-## Comprobar la interfaz
+El corpus contiene **12 documentos ficticios y 24 fragmentos**, identificados y versionados. Las políticas no representan condiciones oficiales de PedidosYa. La clasificación utiliza reglas y confianza heurística, no un modelo ML ni probabilidades calibradas.
 
-Con el entorno virtual activado, instala las herramientas de pruebas:
+## Diseño y accesibilidad
+
+El tema automático sigue a Streamlit; en modo estático sigue al sistema. La selección se conserva en el navegador. La tipografía usa fuentes del sistema, los controles táctiles tienen al menos 44 px y las tablas anchas se desplazan dentro de su contenedor. Se puede navegar con teclado, saltar al contenido y cerrar menús o diálogos con Escape.
+
+## Pruebas
+
+Instala las dependencias de desarrollo y Chromium:
 
 ```bash
 pip install -r requirements-dev.txt
 python -m playwright install chromium
 ```
 
-Inicia la aplicación con `streamlit run streamlit_app.py` y, en otra terminal con el mismo entorno, ejecuta:
+Inicia una instancia con una base **de prueba**, separada de los datos que quieras conservar:
 
 ```bash
-python -m unittest discover -s tests -v
+SMARTCLAIM_DB_PATH=/tmp/smartclaim-tests.sqlite3 streamlit run streamlit_app.py --server.port=8502 --server.headless=true
 ```
 
-Las pruebas comprueban la integración con Streamlit, ocho secciones en cinco anchos de pantalla y ambos temas, persistencia del tema, registro y revisión de reclamos, consultas de pedidos y navegación por teclado. `UI_BASE_URL` permite usar otra dirección de prueba; `UI_BROWSER_EXECUTABLE` permite indicar un Chromium ya instalado.
+En otra terminal:
 
-## Ejecución estática opcional
+```bash
+node --test tests/domain.test.cjs
+UI_BASE_URL=http://127.0.0.1:8502 python -m unittest discover -s tests -v
+```
 
-La carpeta `frontend/` también puede abrirse sin Streamlit. En Windows usa `ABRIR-DIRECTO.bat` o abre `frontend/index.html`. Para un servidor local ejecuta `start-server.bat` y visita `http://localhost:4173/frontend/`.
+Node.js 18+ solo es necesario para las pruebas del dominio, no para ejecutar Streamlit. En Windows configura las variables con `$env:SMARTCLAIM_DB_PATH` y `$env:UI_BASE_URL`. `UI_BROWSER_EXECUTABLE` permite usar otro Chromium ya instalado.
+
+Las pruebas verifican permisos en el servidor, versiones/aprobaciones, recuperación y abstención, métricas y muestras, exportaciones, sesión, flujo cliente/agente y ocho secciones en cinco anchos y ambos temas. Las pruebas de navegador escriben reclamos, mediciones y registros complementarios en su base de prueba; no deben apuntar a una instancia con información real.
+
+## Vista estática opcional
+
+`bash start-server.sh` o `start-server.bat` sirve **solo `frontend/`** en el puerto 4173, para revisar el diseño local. No ofrece cuentas autenticadas ni acceso a la base compartida. El flujo con aislamiento de usuarios debe comprobarse en Streamlit. `ABRIR-DIRECTO.bat` abre esa vista sin servidor.
+
+## Documentos del proyecto
+
+- [Pautas del profesor](docs/referencia/PAUTAS-PROFESOR.pdf).
+- [Resolución vigente de la actividad](docs/referencia/Grupo%204%20-%20Actividad%2004.pdf).
+- [Plan Scrum](docs/PLAN-SCRUM.md), [auditoría de cumplimiento](docs/REVISION-ACTIVIDAD.md) y [guion de presentación](docs/DEMO-10-MINUTOS.md).
+
+La entrega formal aún necesita los comentarios de Review, acuerdos de retrospectiva, evidencia individual y capturas definitivas identificados como pendientes en el informe. La web permite registrarlos; no los inventa.

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f4f7fb" />
-    <title>Delivery G4 · Atención asistida</title>
+    <title>SmartClaim AI · Atención asistida</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -16,15 +16,15 @@
       <aside class="sidebar" id="sidebar" aria-label="Navegación principal">
         <button class="icon-button menu-close" id="menu-close" aria-label="Cerrar menú">×</button>
         <div class="brand-lockup">
-          <div class="brand-mark">DG</div>
+          <div class="brand-mark">SC</div>
           <div>
-            <strong>Delivery G4</strong>
+            <strong>SmartClaim AI</strong>
             <span>Atención asistida</span>
           </div>
         </div>
 
         <div class="workspace-switcher">
-          <div class="workspace-icon">G4</div>
+          <div class="workspace-icon">SC</div>
           <div class="workspace-meta">
             <span class="eyebrow">Espacio de trabajo</span>
             <strong>Operaciones</strong>
@@ -34,23 +34,24 @@
 
         <nav class="nav-stack">
           <p class="nav-label">Atención</p>
-          <button class="nav-item active" data-view="overview"><span class="nav-icon">⌂</span><span>Resumen</span></button>
+          <button class="nav-item active" data-view="overview" data-agent-only><span class="nav-icon">⌂</span><span>Resumen</span></button>
           <button class="nav-item" data-view="claims"><span class="nav-icon">▤</span><span>Bandeja de reclamos</span><span class="nav-count">8</span></button>
           <button class="nav-item" data-view="faq"><span class="nav-icon">?</span><span>Preguntas frecuentes</span></button>
           <button class="nav-item" data-view="orders"><span class="nav-icon">⌁</span><span>Consultar pedido</span></button>
-          <p class="nav-label nav-label-spaced">Conocimiento</p>
-          <button class="nav-item" data-view="sources"><span class="nav-icon">◈</span><span>Políticas y fuentes</span></button>
-          <button class="nav-item" data-view="reports"><span class="nav-icon">◒</span><span>Evaluación</span></button>
-          <p class="nav-label nav-label-spaced">Entrega</p>
-          <button class="nav-item" data-view="sprints"><span class="nav-icon">⊞</span><span>Plan Scrum</span></button>
+          <p class="nav-label nav-label-spaced" data-agent-only>Conocimiento</p>
+          <button class="nav-item" data-view="sources" data-agent-only><span class="nav-icon">◈</span><span>Políticas y fuentes</span></button>
+          <button class="nav-item" data-view="reports" data-agent-only><span class="nav-icon">◒</span><span>Evaluación</span></button>
+          <p class="nav-label nav-label-spaced" data-agent-only>Entrega</p>
+          <button class="nav-item" data-view="sprints" data-agent-only><span class="nav-icon">⊞</span><span>Plan Scrum</span></button>
         </nav>
 
         <div class="sidebar-footer">
           <div class="team-mini">
-            <div class="avatar avatar-joseph">JA</div>
-            <div><strong>Joseph Alexander</strong><span>Product Owner</span></div>
+            <div class="avatar avatar-joseph" data-agent-avatar>AD</div>
+            <div><strong data-agent-name>Sesión de demostración</strong><span>SmartClaim AI</span></div>
             <span class="presence"></span>
           </div>
+          <button class="nav-item" data-action="logout"><span class="nav-icon" aria-hidden="true">↪</span><span>Cerrar sesión</span></button>
           <button class="nav-item settings-item" data-view="settings"><span class="nav-icon">◍</span><span>Configuración</span></button>
         </div>
       </aside>
@@ -58,16 +59,16 @@
       <main class="main-content" id="main-content">
         <header class="topbar">
           <button class="icon-button menu-toggle" id="menu-toggle" aria-label="Abrir menú de navegación" aria-controls="sidebar" aria-expanded="false">☰</button>
-          <div class="breadcrumb"><span>Delivery G4</span><b>/</b><strong id="breadcrumb-current">Resumen</strong></div>
+          <div class="breadcrumb"><span>SmartClaim AI</span><b>/</b><strong id="breadcrumb-current">Resumen</strong></div>
           <div class="topbar-actions">
             <label class="theme-control" for="theme-select"><span>Tema</span><select id="theme-select" aria-label="Tema de la interfaz"><option value="auto">Automático</option><option value="light">Claro</option><option value="dark">Oscuro</option></select></label>
             <button class="topbar-search" id="global-search-trigger" aria-label="Buscar"><span class="search-glyph">⌕</span><span>Buscar reclamos</span><kbd>⌘ K</kbd></button>
-            <button class="icon-button" aria-label="Notificaciones" title="Notificaciones"><span class="notification-dot"></span>◌</button>
-            <div class="topbar-user"><div class="avatar avatar-joseph">JA</div><span>Joseph</span><span class="chevron">⌄</span></div>
+            <button class="icon-button" id="review-queue-trigger" aria-label="Revisiones de preguntas" title="Revisiones de preguntas"><span class="notification-dot"></span>◌</button>
+            <div class="topbar-user"><div class="avatar avatar-joseph" data-agent-avatar>AD</div><span data-agent-name>Sesión de demostración</span><span class="chevron">⌄</span></div>
           </div>
         </header>
 
-        <section class="view-container" id="view-container" tabindex="-1" aria-label="Contenido de la sección">
+        <div class="prototype-note" role="note">Prototipo académico sin IA generativa ni integración con PedidosYa. Los envíos son simulados.</div><div id="save-status" class="save-status" role="status"></div><div id="storage-notice" class="answer-note hidden" role="alert"></div><section class="view-container" id="view-container" tabindex="-1" aria-label="Contenido de la sección">
           <!-- Dynamic views are injected by app.js -->
         </section>
       </main>
@@ -84,10 +85,16 @@
         <label class="field"><span>Número de pedido</span><input name="order" required placeholder="DG4-2026-0000" /></label>
         <label class="field"><span>Canal de contacto</span><select name="channel"><option>Chat</option><option>Correo</option><option>Web</option><option>WhatsApp</option></select></label>
         <label class="field full"><span>Describe el problema</span><textarea name="description" rows="5" required placeholder="Cuéntanos qué ocurrió con tu pedido..."></textarea><small>La descripción es necesaria para registrar el caso.</small></label>
-        <div class="form-foot full"><span class="form-hint">Se guardará con estado <b>Nuevo</b>.</span><button type="submit" class="button primary">Registrar reclamo <span>→</span></button></div>
+        <div class="form-foot full"><span class="form-hint">Se clasificará y quedará pendiente de revisión; los casos sin respaldo se escalan.</span><button type="submit" class="button primary">Registrar reclamo <span>→</span></button></div>
       </form>
     </template>
 
+    <script src="bridge.js"></script>
+    <script src="data.js"></script>
+    <script src="domain.js"></script>
     <script src="app.js"></script>
+    <script src="evaluation-ui.js"></script>
+    <script src="scrum-ui.js"></script>
+    <script src="shell.js"></script>
   </body>
 </html>

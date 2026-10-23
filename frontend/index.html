@@ -3,17 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f4f7fb" />
     <title>Delivery G4 · Atención asistida</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#view-container">Saltar al contenido</a>
     <div id="toast-region" class="toast-region" aria-live="polite"></div>
     <div class="app-shell">
-      <aside class="sidebar" aria-label="Navegación principal">
+      <button class="navigation-backdrop hidden" id="navigation-backdrop" aria-label="Cerrar menú de navegación" tabindex="-1"></button>
+      <aside class="sidebar" id="sidebar" aria-label="Navegación principal">
+        <button class="icon-button menu-close" id="menu-close" aria-label="Cerrar menú">×</button>
         <div class="brand-lockup">
           <div class="brand-mark">DG</div>
           <div>
@@ -25,7 +26,7 @@
         <div class="workspace-switcher">
           <div class="workspace-icon">G4</div>
           <div class="workspace-meta">
-            <span class="eyebrow">Workspace</span>
+            <span class="eyebrow">Espacio de trabajo</span>
             <strong>Operaciones</strong>
           </div>
           <button class="icon-button subtle" aria-label="Cambiar workspace" title="Cambiar workspace">⌄</button>
@@ -54,17 +55,19 @@
         </div>
       </aside>
 
-      <main class="main-content">
+      <main class="main-content" id="main-content">
         <header class="topbar">
+          <button class="icon-button menu-toggle" id="menu-toggle" aria-label="Abrir menú de navegación" aria-controls="sidebar" aria-expanded="false">☰</button>
           <div class="breadcrumb"><span>Delivery G4</span><b>/</b><strong id="breadcrumb-current">Resumen</strong></div>
           <div class="topbar-actions">
-            <button class="topbar-search" id="global-search-trigger" aria-label="Buscar"><span class="search-glyph">⌕</span><span>Buscar en el workspace</span><kbd>⌘ K</kbd></button>
+            <label class="theme-control" for="theme-select"><span>Tema</span><select id="theme-select" aria-label="Tema de la interfaz"><option value="auto">Automático</option><option value="light">Claro</option><option value="dark">Oscuro</option></select></label>
+            <button class="topbar-search" id="global-search-trigger" aria-label="Buscar"><span class="search-glyph">⌕</span><span>Buscar reclamos</span><kbd>⌘ K</kbd></button>
             <button class="icon-button" aria-label="Notificaciones" title="Notificaciones"><span class="notification-dot"></span>◌</button>
             <div class="topbar-user"><div class="avatar avatar-joseph">JA</div><span>Joseph</span><span class="chevron">⌄</span></div>
           </div>
         </header>
 
-        <section class="view-container" id="view-container">
+        <section class="view-container" id="view-container" tabindex="-1" aria-label="Contenido de la sección">
           <!-- Dynamic views are injected by app.js -->
         </section>
       </main>

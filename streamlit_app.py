@@ -43,13 +43,29 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-      #MainMenu, header, footer { visibility: hidden; }
-      [data-testid="stAppViewContainer"] > .main { padding: 0 !important; }
-      [data-testid="stAppViewBlockContainer"] { max-width: none !important; padding: 0 !important; }
-      [data-testid="stDecoration"] { display: none; }
+      /* Conserva el menú de Streamlit para elegir su tema y acceder a ajustes. */
+      [data-testid="stMainBlockContainer"],
+      [data-testid="stAppViewBlockContainer"] {
+        max-width: none;
+        padding: 3.75rem 0 0;
+      }
+      [data-testid="stVerticalBlock"] { gap: 0; }
+      iframe[title="st.iframe"],
+      iframe[title="Delivery G4 · Atención asistida"] {
+        display: block;
+        width: 100%;
+        height: calc(100vh - 3.75rem);
+        height: calc(100dvh - 3.75rem);
+        border: 0;
+      }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-components.html(load_frontend(), height=2050, scrolling=True)
+# CSS ajusta el marco al espacio visible, con un único desplazamiento interno.
+# Streamlit reciente ofrece una API directa; conserva compatibilidad con 1.37.
+if hasattr(st, "iframe"):
+    st.iframe(load_frontend(), height=900, alt="Delivery G4 · Atención asistida")
+else:
+    components.html(load_frontend(), height=900, scrolling=True)

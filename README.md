@@ -71,6 +71,32 @@ delivery-g4/
 
 Los cambios de reclamos se conservan en `localStorage` dentro del navegador del usuario.
 
+## Apariencia y accesibilidad
+
+- El selector **Tema** permite elegir **Claro**, **Oscuro** o **Automático**. La selección se conserva en el navegador cuando el almacenamiento está disponible.
+- En automático, la interfaz sigue el tema de Streamlit. Al abrir el frontend por separado, sigue la preferencia del sistema operativo.
+- En móviles, el botón de menú muestra la navegación completa. Las tarjetas y formularios se organizan en una columna; las tablas anchas se desplazan dentro de su propio contenedor, también con teclado.
+- La tipografía usa fuentes del sistema, sin descargas externas. Los textos, campos, avisos y estados comparten colores con contraste para ambos temas.
+- Se puede navegar con teclado, saltar al contenido y cerrar menús y diálogos con Escape. Los diálogos mantienen el foco dentro y lo devuelven al control de origen al cerrar.
+- El marco de Streamlit ocupa el alto disponible de la ventana, sin el espacio vacío del marco fijo anterior.
+
+## Comprobar la interfaz
+
+Con el entorno virtual activado, instala las herramientas de pruebas:
+
+```bash
+pip install -r requirements-dev.txt
+python -m playwright install chromium
+```
+
+Inicia la aplicación con `streamlit run streamlit_app.py` y, en otra terminal con el mismo entorno, ejecuta:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+Las pruebas comprueban la integración con Streamlit, ocho secciones en cinco anchos de pantalla y ambos temas, persistencia del tema, registro y revisión de reclamos, consultas de pedidos y navegación por teclado. `UI_BASE_URL` permite usar otra dirección de prueba; `UI_BROWSER_EXECUTABLE` permite indicar un Chromium ya instalado.
+
 ## Ejecución estática opcional
 
 La carpeta `frontend/` también puede abrirse sin Streamlit. En Windows usa `ABRIR-DIRECTO.bat` o abre `frontend/index.html`. Para un servidor local ejecuta `start-server.bat` y visita `http://localhost:4173/frontend/`.
